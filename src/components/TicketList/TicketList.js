@@ -1,16 +1,22 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import Ticket from '../Ticket/Ticket'
-import { fetchId } from '../store/TicketReducer'
+
+import { getTickets } from '../store/TicketReducer'
 
 import classes from './TicketList.module.scss'
 
 function TicketList() {
   const dispatch = useDispatch()
+  const tickets = useSelector((state) => state.getTickets.tickets)
+
+  console.log(tickets)
+
   useEffect(() => {
-    dispatch(fetchId())
+    dispatch(getTickets())
   }, [dispatch])
+
   return (
     <div className={classes.TicketList}>
       <Ticket />

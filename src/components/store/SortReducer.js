@@ -1,15 +1,24 @@
-const defaultStore = {
+import { createSlice } from '@reduxjs/toolkit'
+
+const initialState = {
   isCheapest: true,
   isFastest: false,
 }
 
-export const SortReducer = (state = defaultStore, action) => {
-  switch (action.type) {
-    case 'SORT_CHEAPEST':
-      return { isCheapest: true, isFastest: false }
-    case 'SORT_FASTEST':
-      return { isCheapest: false, isFastest: true }
-    default:
-      return state
-  }
-}
+const sortSlice = createSlice({
+  name: 'sort',
+  initialState,
+  reducers: {
+    cheapest: (state) => {
+      state.isCheapest = true
+      state.isFastest = false
+    },
+    fastest: (state) => {
+      state.isCheapest = false
+      state.isFastest = true
+    },
+  },
+})
+
+export const { cheapest, fastest } = sortSlice.actions
+export default sortSlice.reducer

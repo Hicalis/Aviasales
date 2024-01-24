@@ -72,7 +72,6 @@
   },
   "lint-staged": {
     "*.js": [
-      "npm run lint:fix",
       "npx prettier ./src --write"
     ]
   }

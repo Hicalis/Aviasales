@@ -1,25 +1,20 @@
 import { useDispatch, useSelector } from 'react-redux'
 
 import classes from './Sort.module.scss'
+import { cheapest, fastest } from '../store/SortReducer'
 
 function Sort() {
   const dispatch = useDispatch()
+
   const isCheapest = useSelector((state) => state.sort.isCheapest)
   const isFastest = useSelector((state) => state.sort.isFastest)
-
-  const sortCheapest = () => {
-    dispatch({ type: 'SORT_CHEAPEST' })
-  }
-  const sortFastest = () => {
-    dispatch({ type: 'SORT_FASTEST' })
-  }
 
   return (
     <div className={classes.sort}>
       <button
         className={classes[`${isCheapest ? 'active_first' : 'btn_first'}`]}
         onClick={() => {
-          sortCheapest()
+          dispatch(cheapest())
         }}
       >
         Самый дешевый
@@ -27,7 +22,7 @@ function Sort() {
       <button
         className={classes[`${isFastest ? 'active_second' : 'btn_second'}`]}
         onClick={() => {
-          sortFastest()
+          dispatch(fastest())
         }}
       >
         Самый быстрый

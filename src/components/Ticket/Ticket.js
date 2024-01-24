@@ -6,7 +6,7 @@ function Ticket() {
     <div className={classes.ticket}>
       <div className={classes['top']}>
         <h1>13400 Р</h1>
-        <img src={img}></img>
+        <img src={img} alt="asds"></img>
       </div>
       <div className={classes['info']}>
         <div className={classes['first']}>
