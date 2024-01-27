@@ -29,7 +29,8 @@
   }
   .info {
     display: flex;
-    margin: 20px;
+    margin: 30px;
+    margin-bottom: 20px;
     margin-top: 0;
     flex-wrap: wrap;
     .first {
@@ -63,5 +64,8 @@
       line-height: 21px; /* 150% */
       margin: 0;
     }
+  }
+  .info_stops{
+    width: 91px;
   }
 }

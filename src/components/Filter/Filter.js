@@ -1,30 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux'
 
+import { filterAll, filterWithout, filterOne, filterTwo, filterThree } from '../store/FilterReducer'
+
 import classes from './Filter.module.scss'
 
 function Filter() {
   const dispatch = useDispatch()
+
   const isAll = useSelector((state) => state.filter.isAll)
   const isWithout = useSelector((state) => state.filter.isWithout)
   const isOne = useSelector((state) => state.filter.isOne)
   const isTwo = useSelector((state) => state.filter.isTwo)
   const isThree = useSelector((state) => state.filter.isThree)
-
-  const filterAll = () => {
-    dispatch({ type: 'FILTER_ALL' })
-  }
-  const filterWithout = () => {
-    dispatch({ type: 'FILTER_WITHOUT' })
-  }
-  const filterOne = () => {
-    dispatch({ type: 'FILTER_ONE' })
-  }
-  const filterTwo = () => {
-    dispatch({ type: 'FILTER_TWO' })
-  }
-  const filterThree = () => {
-    dispatch({ type: 'FILTER_THREE' })
-  }
 
   return (
     <div className={classes.filter}>
@@ -35,7 +22,7 @@ function Filter() {
             type="checkbox"
             checked={isAll}
             onChange={() => {
-              filterAll()
+              dispatch(filterAll())
             }}
           />
           <h2>Все</h2>
@@ -47,7 +34,7 @@ function Filter() {
             type="checkbox"
             checked={isWithout}
             onChange={() => {
-              filterWithout()
+              dispatch(filterWithout())
             }}
           />
           <h2>Без пересадок</h2>
@@ -59,7 +46,7 @@ function Filter() {
             type="checkbox"
             checked={isOne}
             onChange={() => {
-              filterOne()
+              dispatch(filterOne())
             }}
           />
           <h2>1 пересадка</h2>
@@ -71,7 +58,7 @@ function Filter() {
             type="checkbox"
             checked={isTwo}
             onChange={() => {
-              filterTwo()
+              dispatch(filterTwo())
             }}
           />
           <h2>2 пересадки</h2>
@@ -83,7 +70,7 @@ function Filter() {
             type="checkbox"
             checked={isThree}
             onChange={() => {
-              filterThree()
+              dispatch(filterThree())
             }}
           />
           <h2>3 пересадки</h2>
